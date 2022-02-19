@@ -1,0 +1,127 @@
+﻿
+#WebsiteName {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+    #WebsiteName:hover {
+        color: rgb(209, 209, 209);
+    }
+
+.navLinks {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.HomeText {
+    color: rgb(1, 38, 59);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.text-container {
+    margin-top: 200px;
+    margin-left: 70px;
+}
+
+#Welcome {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 50px;
+    justify-content: center;
+    color: rgb(75, 5, 107);
+}
+
+#line2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(168, 0, 93);
+}
+
+#line3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: justify;
+    font-size: small;
+}
+
+#imagebox {
+    padding: 100px 160px;
+}
+
+#heading2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(27, 111, 206);
+    font-weight: bold;
+    font-size: 40px;
+    margin: 50px 66px;
+    margin-top: 0px;
+}
+
+.cardHome {
+    padding: 30px;
+}
+
+.cardImage {
+    width: 100px;
+}
+
+.cardHeading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: medium;
+    color: rgb(168, 0, 93);
+    text-align: center;
+    margin: 10px 2px;
+}
+
+.cardBody {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: small;
+}
+
+#ServiceHeading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(75, 5, 107);
+    font-weight: bold;
+    font-size: 70px;
+    margin: 50px 66px;
+    margin-top: 100px;
+}
+
+#contactHeading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(227 26 128);
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.labels {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: rgb(75, 5, 107);
+}
+
+#secondContactBlock {
+    padding: 33px 150px;
+}
+
+.iconImage {
+    width: 60px;
+}
+
+#loginVector {
+    max-width: 80%;
+    height: auto;
+}
+
+.checkBox {
+    min-height: 20px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(75, 5, 107);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

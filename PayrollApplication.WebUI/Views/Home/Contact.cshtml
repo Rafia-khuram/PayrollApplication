@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+
+    <div class="row justify-content-center my-5">
+        <div class="col-sm-6 col-lg-6 col-md-6">
+
+            <div>
+
+                <img src="~/images/contact2.jpg" class="img-fluid">
+               
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-6 col-md-6" id="secondContactBlock">
+            <h3 id="contactHeading">Contact Us</h3>
+            <form>
+                <label for="Name" class="labels mt-2 form-label">Your Name</label>
+                <div class="mb-4 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+                    <input type="text" class="form-control" id="Name" placeholder="e.g: xyz">
+                </div>
+
+                <label for="Email" class="labels form-label">Email Address</label>
+                <div class="mb-4 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                    <input type="email" class="form-control" id="Email" placeholder="e.g: abc@example.com">
+                </div>
+
+                <label for="Message" class="labels form-label">Your Message</label>
+                <div class="mb-4 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-chat-left-fill"></i>
+                    </span>
+
+                    <textarea class="form-control" id="Message" placeholder="Type your message here" style="height: 140px;"></textarea>
+
+                </div>
+
+                <div class="mb-4 text-center">
+                    <button type="Submit" class="btn btn-dark">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="container" id="heading2">You can also contact us here...</div>
+    <div class="justify-content-center row">
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/email.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Email</h3>
+            <div class="text-center mb-5 container"><a class="cardBody" href="#">UserName@gmail.com</a></div>
+        </div>
+
+        <!-- end ist card -->
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/phone.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Phone Number</h3>
+            <div class="text-center container"><a class="cardBody" href="#">0900-xxxxxxxxxx</a></div>
+        </div>
+
+        <!-- end 2nd card -->
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/web.png" alt="">
+            </div>
+
+            <h3 class="container cardHeading">Website</h3>
+            <div class="text-center container"><a class="cardBody" href="#">www.companyName.com</a></div>
+        </div>
+        <!-- end 3rd card -->
+
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/facebook.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Face Book</h3>
+            <div class="text-center container"><a class="cardBody" href="#">UserName/facebook.com</a></div>
+        </div>
+        <!-- end 4th card -->
+
+
+
+
+</body>

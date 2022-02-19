@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-sm  navbar-dark fixed-top" style="background-color: rgb(27, 111, 206);">
+        <div class="container">
+            <a id="WebsiteName" class="navbar-brand" href="/Home/Index">Pay Roll</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav ">
+                    <li><a href="/Admin/Users">Users</a></li>
+                    <li><a href="/Admin/Employees">Countries</a></li>
+                    <li><a href="/Admin/Roles">Roles</a></li>
+
+                    <li><a href="/Admin/Attendance">Attendance</a></li>
+                    <li><a href="/Admin/Salaries">Salary</a></li>
+                    <li><a href="/Admin/SalaryTypes">Salary Types</a></li>
+                    <li><a href="/Admin/Feedbacks">Feedbacks</a></li>
+                    <li><a href="/Admin/Genders">Genders</a></li>
+                    <li><a href="/Admin/Payments">Payments</a></li>
+                    <li><a href="/Admin/PaymentStatuses">Payment Statuses</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--<nav class="navbar navbar-inverse">
+        <div class="container-fluid">-->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <!--<div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Admin/Index">Shopping Application</a>
+            </div>-->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Admin/Users">Users</a></li>
+                    <li><a href="/Admin/Employees">Countries</a></li>
+                    <li><a href="/Admin/Roles">Roles</a></li>
+
+                    <li><a href="/Admin/Attendance">Attendance</a></li>
+                    <li><a href="/Admin/Salaries">Salary</a></li>
+                    <li><a href="/Admin/SalaryTypes">Salary Types</a></li>
+                    <li><a href="/Admin/Feedbacks">Feedbacks</a></li>
+                    <li><a href="/Admin/Genders">Genders</a></li>
+                    <li><a href="/Admin/Payments">Payments</a></li>
+                    <li><a href="/Admin/PaymentStatuses">Payment Statuses</a></li>
+
+                </ul>
+            </div>--><!-- /.navbar-collapse -->
+        <!--</div>--><!-- /.container-fluid -->
+    <!--</nav>-->
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

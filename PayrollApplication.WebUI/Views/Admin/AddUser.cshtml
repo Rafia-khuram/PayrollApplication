@@ -1,0 +1,112 @@
+﻿@using PayrollApplication.BOL
+@model User
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="images/loginFormVector.png" id="loginVector">
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-6 col-md-6" id="secondContactBlock">
+        <h3 id="contactHeading">Add User</h3>
+        <form>
+            @using (Html.BeginForm("Add User", "Admin", FormMethod.Post))
+            {
+                <label for="Name" class="labels form-label">Enter Name</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "e.g: abc", required = "required" })
+                </div>
+
+
+                <label for="Email" class="labels form-label">Email Address</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x=>x.Email, new { @class = "form-control", placeholder= "xyz@example.com", required="required"})
+                </div>
+                <label for="Password" class="labels mt-2 form-label">Password</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-file-lock2-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Your password", required = "required" })
+                </div>
+                <label for="Phone" class="labels form-label">Phone Number</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-telephone-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", placeholder ="xxxx-xxxxxxxx", required = "required" })
+                </div>
+
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-rolodex"></i>
+                    </span>
+                    @{
+                        List<Role> Roles = ViewBag.Roles as List<Role>;
+                    }
+                    <select name="RoleId" class="form-control">
+                        <option selected="selected" disabled>-Select Role-</option>
+                        @foreach (var item in Roles)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-rolodex"></i>
+                    </span>
+                    @{
+                        List<Gender> Genders = ViewBag.Genders as List<Gender>;
+                    }
+                    <select name="GenderId" class="form-control">
+                        <option selected="selected" disabled>-Select Gender-</option>
+                        @foreach (var item in Genders)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <label for="cardImage" class="labels form-label">Image</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-card-image"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+                </div>
+
+                <label for="Address" class="labels form-label">Address</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", placeholder = "street / city / Country", required = "required" })
+                </div>
+
+                <div class="mb-3 text-center">
+                    <button type="Submit" class="btn btn-dark">Submit</button>
+                </div>
+
+            }
+        </form>
+
+    </div>
+
+</div>
+

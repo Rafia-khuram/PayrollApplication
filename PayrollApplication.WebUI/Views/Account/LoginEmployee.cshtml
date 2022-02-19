@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "LoginEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-sm-6 col-lg-6 col-md-6 col-xl-6">
+
+            <div>
+
+                <img src="~/images/loginFormVector.png" id="loginVector">
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-6 col-md-6" id="secondContactBlock">
+            <h3 id="contactHeading">Login Here!</h3>
+            <form>
+                @using (Html.BeginForm("LoginEmployee", "Account", FormMethod.Post))
+                {
+                    <label for="Email" class="labels mt-5 form-label">Email Address</label>
+                    <div class="mb-4 input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-fill"></i>
+                        </span>
+                        <input type="email" class="form-control" id="Email" placeholder="e.g: abc@example.com">
+                    </div>
+                    <label for="Password" class="labels mt-2 form-label">Password</label>
+                    <div class="mb-4 input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-file-lock2-fill"></i>
+                        </span>
+                        <input type="password" class="form-control" id="Password" placeholder="Your Password">
+                    </div>
+                    @*<div class="checkBox">
+                        <label for="checkbox"><input type="checkbox" name="Remember Me">Remember Me</label>
+                    </div>*@
+                    <div class="mb-4 text-center">
+                        <button type="submit" class="btn btn-dark">Login</button>
+                    </div>
+                }
+            </form>
+            @if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <p class="text-danger text-center">@ViewBag.Error</p>
+            }
+        </div>
+
+    </div>
+</body>
