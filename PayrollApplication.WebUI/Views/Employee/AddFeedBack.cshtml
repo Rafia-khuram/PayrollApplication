@@ -1,0 +1,100 @@
+﻿@using PayrollApplication.BOL
+@model FeedBack
+@{
+    ViewBag.Title = "AddFeedBack";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+<body>
+
+    <div class="row justify-content-center ">
+        <div class="col-sm-6 col-lg-6 col-md-6">
+
+            <div>
+
+                <img src="~/images/contact2.jpg" class="img-fluid">
+
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-6 col-md-6" id="secondContactBlock">
+            <h3 class="contactHeading">Feedback!</h3>
+            @using (Html.BeginForm("AddFeedBack", "Employee", FormMethod.Post))
+            {
+                <form>
+                    <label for="Name" class="labels mt-2 form-label">Your Name</label>
+                    <div class="mb-4 input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "enter your name", required = "required" })
+                    </div>
+
+                    <label for="Email" class="labels form-label">Email Address</label>
+                    <div class="mb-4 input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-fill"></i>
+                        </span>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "xyz@example.com", required = "required" })
+                    </div>
+
+                    <label for="Message" class="labels form-label">Your Message</label>
+                    <div class="mb-4 input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-chat-left-fill"></i>
+                        </span>
+                        @Html.TextAreaFor(x => x.Message, new { @class = "form-control", placeholder = "Give us your valuable feedback!", required = "required" })
+
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                </form>
+            }
+            </div>
+
+   
+
+    <div class="container" id="heading2">You can also contact us here...</div>
+    <div class="justify-content-center row">
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/email.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Email</h3>
+            <div class="text-center mb-5 container"><a class="cardBody" href="#">UserName@gmail.com</a></div>
+        </div></div>
+
+        <!-- end ist card -->
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/phone.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Phone Number</h3>
+            <div class="text-center container"><a class="cardBody" href="#">0900-xxxxxxxxxx</a></div>
+        </div>
+
+        <!-- end 2nd card -->
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/web.png" alt="">
+            </div>
+
+            <h3 class="container cardHeading">Website</h3>
+            <div class="text-center container"><a class="cardBody" href="#">www.companyName.com</a></div>
+        </div>
+        <!-- end 3rd card -->
+
+        <div class="col-sm-2 col-lg-2 col-md-2 ">
+            <div class="container">
+                <img class="iconImage mx-auto d-block" src="~/images/facebook.png" alt="">
+            </div>
+            <h3 class="container cardHeading">Face Book</h3>
+            <div class="text-center container"><a class="cardBody" href="#">UserName/facebook.com</a></div>
+        </div>
+        <!-- end 4th card -->
+
+
+
+
+</body>

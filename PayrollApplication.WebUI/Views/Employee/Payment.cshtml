@@ -1,0 +1,54 @@
+﻿@using PayrollApplication.BOL
+@model List<Payment>
+@{
+    ViewBag.Title = "DetailPayments";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <h3 class="contactHeading">Payment Details</h3>
+    </div>
+    <br />
+    <table id="myTable" class="mt-2 table table-light  table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>SalaryId</th>
+                <th>Employee Name</th>
+                <th>Issued Date</th>
+                <th>For Month</th>
+                <th>Payment Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+                    <td>@item.SalaryId </td>
+                    <td>@item.Salary.Employee.Name</td>
+                    <td>@item.IssuedDate</td>
+                    <td>@item.Salary.Month,@item.Salary.Year</td>
+                    <td>@item.PaymentStatus.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

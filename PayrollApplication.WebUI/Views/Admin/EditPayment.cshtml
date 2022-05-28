@@ -1,0 +1,77 @@
+﻿@using PayrollApplication.BOL
+@model Payment
+@{
+    ViewBag.Title = "EditPayment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="~/images/loginFormVector.png" class="loginVector">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xl-6" id="secondContactBlock">
+        <h3 class="contactHeading">Edit Payment</h3>
+        @using (Html.BeginForm("EditPayment", "Admin", FormMethod.Post))
+        {
+            <form>
+             
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-rolodex"></i>
+                    </span>
+                    @{
+                        List<Salary> Salaries = ViewBag.Salaries as List<Salary>;
+                    }
+                    <input type="hidden" id="SelectedSalary" value="@Model.Salary.Employee.Name" />
+                    <select name="SalaryId" class="form-select">
+
+                        @foreach (var item in Salaries)
+                        {
+                            <option value="@item.Id">@item.Employee.Name</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-rolodex"></i>
+                    </span>
+                    @{
+                        List<PaymentStatus> paymentStatuses = ViewBag.PaymentStatuses as List<PaymentStatus>;
+                    }
+                    <input type="hidden" id="SelectedPaymentStatus" value="@Model.PaymentStatusId" />
+                    <select name="PaymentStatusId" class="form-select">
+
+                        @foreach (var item in paymentStatuses)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+
+
+            </form>
+        }
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $("#SalaryId").val($("#SelectedSalary").val());
+        $("#PaymentStatusId").val($("#SelectedPaymentStatus").val());
+    </script>
+
+}
+

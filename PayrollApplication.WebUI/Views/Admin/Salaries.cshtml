@@ -1,0 +1,114 @@
+﻿@using PayrollApplication.BOL.ViewModels
+@model List<SalaryViewModel>
+
+@{
+    ViewBag.Title = "Salaries";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+
+        <button class="btn btn-primary" style="background-color:rgb(27, 111, 206) ;"><a style="color: white; text-decoration:none; " href="/Admin/AddSalary">Select Year and Month</a></button>
+    </div>
+    <br />
+    <table id="myTable" class="mt-2 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Employee Name</th>
+                <th>Bonus</th>
+                <th>Deductions</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Total Salary</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>@item.Salary.Employee.Name</td>
+                <td>@item.Salary.Bonus PKR</td>
+                <td>@item.Salary.Deductions PKR</td>
+                @if (item.Salary.Month == 1)
+                {
+                    <td>January</td>
+                }
+                @if (item.Salary.Month == 2)
+                {
+                    <td>February</td>
+                }
+                @if (item.Salary.Month == 3)
+                {
+                    <td>March</td>
+                }
+                @if (item.Salary.Month == 4)
+                {
+                    <td>April</td>
+                }
+                @if (item.Salary.Month == 5)
+                {
+                    <td>May</td>
+                }
+                @if (item.Salary.Month == 6)
+                {
+                    <td>June</td>
+                }
+                @if (item.Salary.Month == 7)
+                {
+                    <td>July</td>
+                }
+                @if (item.Salary.Month == 8)
+                {
+                    <td>August</td>
+                }
+                @if (item.Salary.Month == 9)
+                {
+                    <td>September</td>
+                }
+                @if (item.Salary.Month == 10)
+                {
+                    <td>October</td>
+                }
+                @if (item.Salary.Month == 11)
+                {
+                    <td>November</td>
+                }
+                @if (item.Salary.Month == 12)
+                {
+                    <td>December</td>
+                }
+
+                <td>@item.Salary.Year</td>
+                <td>@item.TotalSalary PKR</td>
+
+                <td>
+                    <a href="/Admin/GetSalary/@item.Salary.EmployeeId"> <span class="bi bi-search text-primary"></span></a>
+                    <a href="/Admin/EditSalary/@item.Salary.Id"> <span class="bi bi-pencil-square text-info"></span></a>
+                    <a href="/Admin/DeleteSalary/@item.Salary.Id"> <span class="bi bi-person-x-fill text-danger"></span></a>
+
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

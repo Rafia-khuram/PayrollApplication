@@ -1,7 +1,121 @@
 ﻿
+@using PayrollApplication.BOL.ViewModels
+@model List<EmployeeViewModel>
+
 @{
     ViewBag.Title = "Employees";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Employees</h2>
 
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <h3 class="contactHeading">Mark Attendance Here!</h3>
+    </div>
+    <br />
+    <table id="myTable" class="mt-5 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Break Start</th>
+                <th>Break End</th>
+                <th>Current Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+                    <td>@item.Employee.Name</td>
+                    @if (item.EmployeeStatus.Equals("Absent", StringComparison.InvariantCultureIgnoreCase) || item.EmployeeStatus.Equals("CheckOut", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-success" href="/Admin/AddAttendance?ActivityTypeId=1&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckIn</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-danger disabled" href="/Admin/AddAttendance?ActivityTypeId=2&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckOut</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-dark disabled" href="/Admin/AddAttendance?ActivityTypeId=3&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">StartBreak</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-secondary disabled" href="/Admin/AddAttendance?ActivityTypeId=4&EmployeeId=@item.Employee.Id">EndBreak</a>
+                        </td>
+                    }
+
+                    @if (item.EmployeeStatus.Equals("CheckIn", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-success disabled" href="/Admin/AddAttendance?ActivityTypeId=1&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckIn</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-danger " href="/Admin/AddAttendance?ActivityTypeId=2&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckOut</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-dark " href="/Admin/AddAttendance?ActivityTypeId=3&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">StartBreak</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-secondary disabled" href="/Admin/AddAttendance?ActivityTypeId=4&EmployeeId=@item.Employee.Id">EndBreak</a>
+                        </td>
+
+                    }
+                    @if (item.EmployeeStatus.Equals("BreakStart", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-success disabled" href="/Admin/AddAttendance?ActivityTypeId=1&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckIn</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-danger disabled" href="/Admin/AddAttendance?ActivityTypeId=2&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckOut</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-dark disabled " href="/Admin/AddAttendance?ActivityTypeId=3&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">StartBreak</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-secondary " href="/Admin/AddAttendance?ActivityTypeId=4&EmployeeId=@item.Employee.Id">EndBreak</a>
+                        </td>
+
+                    }
+                    @if (item.EmployeeStatus.Equals("BreakEnd", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-success disabled" href="/Admin/AddAttendance?ActivityTypeId=1&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckIn</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-danger " href="/Admin/AddAttendance?ActivityTypeId=2&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">CheckOut</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-dark disabled" href="/Admin/AddAttendance?ActivityTypeId=3&EmployeeId=@item.Employee.Id&EmployeeStatus=@item.EmployeeStatus">StartBreak</a>
+                        </td>
+                        <td>
+                            <a type="submit" class="btn btn-sm btn-secondary disabled" href="/Admin/AddAttendance?ActivityTypeId=4&EmployeeId=@item.Employee.Id">EndBreak</a>
+                        </td>
+
+                    }
+
+                    <td>@item.EmployeeStatus</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

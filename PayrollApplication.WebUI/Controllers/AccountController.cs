@@ -1,4 +1,5 @@
 ﻿using PayrollApplication.BAL;
+using PayrollApplication.BOL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace PayrollApplication.WebUI.Controllers
         }
 
         public ActionResult Login()
-          {
+        {
             return View();
         }
 
@@ -25,71 +26,38 @@ namespace PayrollApplication.WebUI.Controllers
         {
 
             var user = new AccountBAL().GetUserInfo(email, password);
-            Response.Cookies["user-access-token"].Value = user.AccessToken;
-            Response.Cookies["user-access-token"].Expires = DateTime.Now.AddDays(1);
-
-
-            if (user.Role.Equals("Admin"))
+            if (user != null)
             {
-                return Redirect("/Admin/Index");
+                Response.Cookies["user-access-token"].Value = user.AccessToken;
+                Response.Cookies["user-access-token"].Expires = DateTime.Now.AddDays(1);
+                if (user.Role.Equals("Admin"))
+                {
+                    return Redirect("/Admin/Index");
+                }
+
+                if (user.Role.Equals("Employee"))
+                {
+                    return Redirect("/Employee/Index");
+                }
             }
+           
             else
             {
-                ViewBag.Error = "Email or password is incorrect or you do not have permission to access! Try again..";
+                ViewBag.Error = "Login Failed! Email or password is incorrect";
                 return View();
             }
-        }
 
-
-        public ActionResult LoginEmployee()
-        {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult LoginEmployee(string email, string password)
+           public ActionResult LogOut()
         {
-
-              var user =  new AccountBAL().GetUserInfo(email, password);
-            Response.Cookies["user-access-token"].Value = user.AccessToken;
-            Response.Cookies["user-access-token"].Expires = DateTime.Now.AddDays(1);
-
-
-            if (user.Role.Equals("Employee"))
+            if (Request.Cookies["user-access-token"] != null)
             {
-                return Redirect("/Employee/Index");
+                Response.Cookies["user-access-token"].Expires = DateTime.UtcNow.AddHours(5);
             }
-            else
-            {
-                ViewBag.Error = "Email or password is incorrect or you do not have permission to access! Try again..";
-                return View();
-            }
+            return Redirect("/Home/Index");
         }
-
-
-
-        //[HttpPost]
-        //public ActionResult Login(string email, string password)
-        //{
-
-        //    var user = new AccountBAL().GetUserInfo(email, password);
-        //    Response.Cookies["user-access-token"].Value = user.AccessToken;
-        //    Response.Cookies["user-access-token"].Expires = DateTime.Now.AddDays(1);
-        //    if (user.Role.Equals("Admin"))
-        //    {
-        //        return Redirect("/Admin/Index");
-        //    }
-
-        //    else if (user.Role.Equals("Employee"))
-        //    {
-        //        return Redirect("/Employee/EmployeeIndex");
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Error = "You do not have permission to access!";
-        //        return View();
-        //    }
-
-
+     
     }
 }

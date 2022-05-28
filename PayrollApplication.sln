@@ -4,14 +4,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.WebUI", "PayrollApplication.WebUI\PayrollApplication.WebUI.csproj", "{FE30702D-A870-4919-A012-7A5020B92E46}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D} = {AFC97639-575C-4A5E-B11A-984437C3CE2D}
+		{1C1F1069-EFC4-49FE-B24F-3D35E4C03ABC} = {1C1F1069-EFC4-49FE-B24F-3D35E4C03ABC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.BAL", "PayrollApplication.BAL\PayrollApplication.BAL.csproj", "{02DB8C2B-5D1F-449D-AFB7-35A1248B4658}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D} = {AFC97639-575C-4A5E-B11A-984437C3CE2D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.DAL", "PayrollApplication.DAL\PayrollApplication.DAL.csproj", "{1C1F1069-EFC4-49FE-B24F-3D35E4C03ABC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D} = {AFC97639-575C-4A5E-B11A-984437C3CE2D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.BOL", "PayrollApplication.BOL\PayrollApplication.BOL.csproj", "{F53328E7-7F77-4368-B8A4-8D9C7D28FD92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.Helper", "PayrollApplication.Helper\PayrollApplication.Helper.csproj", "{FB383FB8-AB17-4EBA-8D4D-AEECC29AF66F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollApplication.Helper", "PayrollApplication.Helper\PayrollApplication.Helper.csproj", "{AFC97639-575C-4A5E-B11A-984437C3CE2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +45,10 @@ Global
 		{F53328E7-7F77-4368-B8A4-8D9C7D28FD92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F53328E7-7F77-4368-B8A4-8D9C7D28FD92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F53328E7-7F77-4368-B8A4-8D9C7D28FD92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB383FB8-AB17-4EBA-8D4D-AEECC29AF66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB383FB8-AB17-4EBA-8D4D-AEECC29AF66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB383FB8-AB17-4EBA-8D4D-AEECC29AF66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB383FB8-AB17-4EBA-8D4D-AEECC29AF66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC97639-575C-4A5E-B11A-984437C3CE2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

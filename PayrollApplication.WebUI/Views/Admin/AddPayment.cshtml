@@ -1,0 +1,66 @@
+﻿
+@using PayrollApplication.BOL
+@model Payment
+@{
+    ViewBag.Title = "AddPayment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="~/images/loginFormVector.png" class="loginVector">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xl-6" id="secondContactBlock">
+        <h3 class="contactHeading">Add Payment</h3>
+        @using (Html.BeginForm("AddPayment", "Admin", FormMethod.Post))
+        {
+    <form>
+
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-person-rolodex"></i>
+            </span>
+            @{
+                List<Salary> salaries = ViewBag.Salaries as List<Salary>;
+            }
+            <select name="SalaryId" class="form-select">
+                <option selected="selected" disabled>Select Salary</option>
+                @foreach (var item in salaries)
+                {
+                    <option value="@item.Id">@item.Employee.Name , (@item.Month) , (@item.Year)</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-person-rolodex"></i>
+            </span>
+            @{
+                List<PaymentStatus> paymentStatuses = ViewBag.PaymentStatuses as List<PaymentStatus>;
+            }
+            <select name="PaymentStatusId" class="form-select">
+                <option selected="selected" disabled>Select PaymentStatus</option>
+                @foreach (var item in paymentStatuses)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+
+
+
+    </form>
+    }
+    </div>
+
+</div>

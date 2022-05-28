@@ -1,0 +1,83 @@
+﻿@using PayrollApplication.BOL
+@model SalarySheet
+@{
+    ViewBag.Title = "EditSalarySheet";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="~/images/loginFormVector.png" class="loginVector">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xl-6" id="secondContactBlock">
+        <h3 class="contactHeading">Edit User</h3>
+        @using (Html.BeginForm("EditSalarySheet", "Admin", FormMethod.Post))
+        {
+    <form>
+       
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-person-rolodex"></i>
+            </span>
+            @{
+                List<User> Employees = ViewBag.Users as List<User>;
+            }
+            <input type="hidden" id="SelectedEmployee" value="@Model.EmployeeId" />
+            <select name="EmployeeId" class="form-select">
+
+                @foreach (var item in Employees)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-person-rolodex"></i>
+            </span>
+            @{
+                List<SalaryType> salaryTypes = ViewBag.SalaryTypes as List<SalaryType>;
+            }
+            <input type="hidden" id="SelectedSalaryType" value="@Model.SalaryTypeId" />
+            <select name="SalaryTypeId" class="form-select">
+
+                @foreach (var item in salaryTypes)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+
+
+        <label for="Amount" class="labels form-label">Amount</label>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-geo-alt-fill"></i>
+            </span>
+            @Html.TextBoxFor(x => x.Amount, new { @class = "form-control", placeholder = "xxxx Rs", required = "required" })
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+
+
+    </form>
+        }
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $("#EmployeeId").val($("#SelectedEmployee").val());
+        $("#SalaryTypeId").val($("#SelectedSalaryType").val());
+    </script>
+
+}

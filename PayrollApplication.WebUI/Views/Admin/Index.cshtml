@@ -1,7 +1,21 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";}
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-4 p-3 text-white">
+            <div class="container text-container">
+                <p class="HomeText" id="Welcome">Welcome!</p>
+                <p class="HomeText" id="line2">You are in Admin Portal</p>
+                <p class="HomeText" id="line3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nam, pariatur voluptatibus et rem, id quae eius alias accusantium quisquam voluptate. Ipsa fuga doloribus pariatur unde, deserunt nemo officia architecto.</p>
+                <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" title="Click here to read more" style="font-family: Georgia, 'Times New Roman', Times, serif;">Learn More</button>
+            </div>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8 p-3 text-white">
+            <div class=" container mx-auto d-block" id="imagebox"> <img src="~/images/admin.jpg" class="img-fluid" id="homeVector"></div>
+        </div>
+    </div>
+
+</div>

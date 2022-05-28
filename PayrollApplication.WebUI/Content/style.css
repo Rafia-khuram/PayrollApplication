@@ -8,7 +8,7 @@
     }
 
 .navLinks {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .HomeText {
@@ -17,7 +17,7 @@
 }
 
 .text-container {
-    margin-top: 200px;
+    margin-top: 120px;
     margin-left: 70px;
 }
 
@@ -89,13 +89,13 @@
     margin-top: 100px;
 }
 
-#contactHeading {
+.contactHeading {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
     color: rgb(227 26 128);
     font-weight: bold;
     font-size: 50px;
 }
+
 
 .labels {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -111,7 +111,7 @@
     width: 60px;
 }
 
-#loginVector {
+.loginVector {
     max-width: 80%;
     height: auto;
 }
@@ -124,4 +124,48 @@
     cursor: pointer;
     color: rgb(75, 5, 107);
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#imagebox2 {
+    padding: 10px 40px;
+}
+
+.img-account-profile {
+    height: 10rem;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+    .card .card-header {
+        font-weight: 500;
+    }
+
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+    color: black;
+    background-color: rgb(168, 0, 93);
+}
+
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #d4d1d1;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

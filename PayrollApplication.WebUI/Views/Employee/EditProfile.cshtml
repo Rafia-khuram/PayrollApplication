@@ -1,0 +1,122 @@
+﻿@using PayrollApplication.BOL
+@model User
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+
+                    <img class="img-account-profile rounded-circle mb-2" src="~/images/@Model.Image" alt="image">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Employee Details</div>
+                <div class="card-body">
+                    @using (Html.BeginForm("EditProfile", "Employee", FormMethod.Post , new { @enctype = "multipart/form-data" }))
+                    {
+
+                        <form>
+                            <!-- Form Group (username)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Your Name</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "e.g: abc", required = "required" })
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (first name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="Designation">Designation</label>
+                                    @{
+                                        List<Role> Roles = ViewBag.Roles as List<Role>;
+                                      }
+                                    <input type="hidden" id="SelectedRole" value="@Model.RoleId" />
+                                    <select name="RoleId" class="form-select">
+
+                                        @foreach (var item in Roles.Where(x=>x.Id!=1))
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+
+
+                                <!-- Form Group (last name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="Gender">Gender</label>
+                                    @{
+                        List<Gender> Genders = ViewBag.Genders as List<Gender>;
+                    }
+                                    <input type="hidden" id="SelectedGender" value="@Model.GenderId" />
+                                    <select name="GenderId" class="form-select">
+
+                                        @foreach (var item in Genders)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row gx-3 mb-3">
+
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputLocation">Your Address</label>
+                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control", placeholder = "street / city / Country", required = "required" })
+                                </div>
+
+                                <label class="small mb-1" for="CardImage">Your Image</label>
+                                
+                                   
+                                    @Html.TextBoxFor(x => x.Image, new { @class = "form-control", Type = "file", name = "Image", required = "required" })
+                                   
+                              
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "xyz@example.com", required = "required" })
+                            </div>
+
+                            <div class="row gx-3 mb-3">
+
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">Phone number</label>
+                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", placeholder = "xxxx-xxxxxxxx", required = "required" })
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPassWord">Password</label>
+                                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Your password", required = "required" })
+                                </div>
+                            </div>
+                            <!-- Save changes button-->
+                            <button type="submit" class="btn btn-dark">Save Changes</button>
+
+                        </form>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        @section Scripts{
+            <script>
+     
+        $("#GenderId").val($("#SelectedGender").val());
+        $("#RoleId").val($("#SelectedRole").val());
+            </script>
+
+        }

@@ -1,0 +1,39 @@
+﻿
+@using PayrollApplication.BOL
+@model ActivityType
+@{
+    ViewBag.Title = "EditActivityType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="~/images/loginFormVector.png" class="loginVector">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xl-6" id="secondContactBlock">
+        <h3 class="contactHeading">Edit Activity Type</h3>
+        @using (Html.BeginForm("EditActivityType", "Admin", FormMethod.Post))
+        {
+            <form>
+                <label for="Name" class="labels form-label">Enter Name</label>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "e.g: abc", required = "required" })
+                </div>
+
+
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </div>
+
+
+            </form>
+        }
+    </div>

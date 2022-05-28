@@ -1,0 +1,54 @@
+﻿@using PayrollApplication.BOL
+@model List<Gender>
+@{
+    ViewBag.Title = "Genders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <button class="btn btn-primary" style="background-color:rgb(27, 111, 206);"><a style="color: white; text-decoration:none" href="/Admin/AddGender">Add Role</a></button>
+    </div>
+    <br />
+    <table id="myTable" class="mt-2 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+                    <td>@item.Name</td>
+
+                    <td>
+                        <a href="#"> <span class="bi bi-search text-primary"></span></a>
+                        <a href="/Admin/EditGender/@item.Id"> <span class="bi bi-pencil-square text-info"></span></a>
+                        <a href="/Admin/DeleteGender/@item.Id"> <span class="bi bi-person-x-fill text-danger"></span></a>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@using PayrollApplication.BOL
+@model List<FeedBack>
+@{
+    ViewBag.Title = "FeedBacks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <h3 class="contactHeading">FeedBacks</h3>
+    </div>
+    <br />
+    <table id="myTable" class="mt-2 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Message</td>
+
+                    <td>
+
+                        <a href="/Admin/DeleteFeedBack/@item.Id"> <span class="bi bi-person-x-fill text-danger"></span></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

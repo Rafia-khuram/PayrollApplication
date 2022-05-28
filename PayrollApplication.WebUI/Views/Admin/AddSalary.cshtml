@@ -1,0 +1,52 @@
+﻿@using PayrollApplication.BOL
+@model Salary
+@{
+    ViewBag.Title = "AddSalary";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+
+        <div>
+
+            <img src="~/images/loginFormVector.png" class="loginVector">
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xl-6" id="secondContactBlock">
+        <h3 class="contactHeading">Select Year</h3>
+        @using (Html.BeginForm("AddSalary", "Admin", FormMethod.Post))
+        {
+
+    <form>
+
+
+        <label for="Year" class="labels form-label">Year</label>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-envelope-fill"></i>
+            </span>
+
+            @Html.DropDownListFor(model => model.Year, Enumerable.Range(DateTime.Now.Year, 10).Select(x => new SelectListItem { Value = x.ToString(), Text = x.ToString() }), "Select Year", new { @class = "form-control" })
+
+        </div>
+
+        <label for="Month" class="labels form-label">Month</label>
+        <div class="mb-3 input-group">
+            <span class="input-group-text">
+                <i class="bi bi-envelope-fill"></i>
+            </span>
+
+            @Html.DropDownListFor(model => model.Month, Enumerable.Range(1, 12).Select(x => new SelectListItem { Value = x.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(x) }), "Select Month", new { @class = "form-control" })
+
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+        }
+    </div>
+
+</div>

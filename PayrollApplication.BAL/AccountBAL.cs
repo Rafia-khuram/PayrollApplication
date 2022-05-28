@@ -27,8 +27,8 @@ namespace PayrollApplication.BAL
                 return new AccountDAL().GetUser(id);
             }
 
-          
-            public UserInfo GetUserInfo(string email, string password)
+
+        public UserInfo GetUserInfo(string email, string password)
             {
                 return new AccountDAL().GetUserInfo(email, password);
 
@@ -37,6 +37,11 @@ namespace PayrollApplication.BAL
             {
                 return new AccountDAL().GetUserRole(AccessToken);
             }
+        public User GetEmployee(string AccessToken)
+        {
+            return new AccountDAL().GetEmployee(AccessToken);
+        }
+
         }
     }
 

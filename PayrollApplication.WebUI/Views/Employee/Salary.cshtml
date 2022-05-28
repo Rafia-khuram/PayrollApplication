@@ -1,0 +1,60 @@
+﻿
+@using PayrollApplication.BOL.ViewModels
+@model List<SalaryViewModel>
+
+
+
+@{
+    ViewBag.Title = "Salary";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <h3 class="contactHeading">Salary Details</h3>
+    </div>
+     <br />
+    <table id="myTable" class="mt-2 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Bonus</th>
+                <th>Deductions</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Total Salary</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Salary.Employee.Name</td>
+                    <td>@item.Salary.Bonus</td>
+                    <td>@item.Salary.Deductions</td>
+                    <td>@item.Salary.Month</td>
+                    <td>@item.Salary.Year</td>
+                    <td>@item.TotalSalary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>
+

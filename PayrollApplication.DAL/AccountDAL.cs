@@ -27,8 +27,6 @@ namespace PayrollApplication.DAL
             return db.Users.Where(x => x.Id == id).FirstOrDefault();
         }
 
-     
-
         public UserInfo GetUserInfo(string email, string password)
         {
             return db.Users.Where(x => x.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase) && x.Password.Equals(password)).Select(x => new UserInfo { Id = x.Id, Name = x.Name, Role = x.Role.Name, AccessToken = x.AccessToken }).FirstOrDefault();
@@ -39,6 +37,11 @@ namespace PayrollApplication.DAL
             return db.Users.Where(x => x.AccessToken.Equals(AccessToken)).Select(x => x.RoleId).FirstOrDefault();
 
         }
+       public User GetEmployee(string accesstoken)
+       {
+           return db.Users.Where(x => x.AccessToken.Equals(accesstoken)).FirstOrDefault();
+        }
+
     }
 }
 

@@ -1,24 +1,49 @@
 ﻿using PayrollApplication.BOL;
+using PayrollApplication.BOL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace PayrollApplication.DAL
 {
     public class UserDAL
     {
-        private PayrollContext db = new PayrollContext();
+        private readonly PayrollContext db = new PayrollContext();
 
         public List<User> GetUsers(){
             return db.Users.ToList();
         }
         public List<User> GetEmployees()
         {
-            return db.Users.Where(x => x.RoleId == 2).ToList();
+            return db.Users.Where(x => x.RoleId != 1).ToList();
         }
 
+        public List<EmployeeViewModel> GetViewModelEmployees()
+        {
+            List<User> employees = db.Users.Where(x => x.RoleId == 2).ToList();
+            List<EmployeeViewModel> employeeView = new List<EmployeeViewModel>();
+            foreach (var item in employees)
+            {
+                var Attendance = db.Attendances.Where(x => x.EmployeeId == item.Id).OrderByDescending(x => x.Id).FirstOrDefault();
+                var model = new EmployeeViewModel();
+                {
+                    model.Employee = item;
+                    if (Attendance != null)
+                    {
+                        model.EmployeeStatus = Attendance.ActivityType.Name;
+                    }
+                    else
+                    {
+                        model.EmployeeStatus = "Absent";
+                    }
+                }
+                employeeView.Add(model);
+            }
+            return employeeView;
+        }
         public User GetUser(int id)
         {
             return db.Users.Where(x => x.Id == id).FirstOrDefault();
@@ -30,6 +55,13 @@ namespace PayrollApplication.DAL
             db.SaveChanges();
         }
 
+        public void AddFeedBack(FeedBack feedBack )
+        {
+            db.FeedBacks.Add(feedBack);
+            db.SaveChanges();
+        }
+
+
         public void DeleteUser(int id)
         {
             db.Users.Remove(db.Users.Find(id));
@@ -37,6 +69,7 @@ namespace PayrollApplication.DAL
         }
         public void EditUser(User user)
         {
+            
             var dbUser = db.Users.Where(x => x.Id == user.Id).FirstOrDefault();
             if (dbUser != null)
             {
@@ -60,21 +93,17 @@ namespace PayrollApplication.DAL
                     dbUser.PhoneNumber = user.PhoneNumber;
 
                 }
+
                 if (!String.IsNullOrEmpty(user.RoleId.ToString()))
                 {
                     dbUser.RoleId = user.RoleId;
 
                 }
-                if (!String.IsNullOrEmpty(user.GenderId.ToString()))
-                {
-                    dbUser.GenderId = user.GenderId;
-
-                }
                 if (!String.IsNullOrEmpty(user.Image))
                 {
                     dbUser.Image = user.Image;
-
                 }
+
                 if (!String.IsNullOrEmpty(user.Address))
                 {
                     dbUser.Address = user.Address;
@@ -83,6 +112,13 @@ namespace PayrollApplication.DAL
             }
             db.SaveChanges();
         }
+
+        public User GetEmployee(int id)
+        {
+            return db.Users.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+
         //       CRUD Role
         public List<Role> GetRoles()
         {
@@ -154,9 +190,10 @@ namespace PayrollApplication.DAL
             }
             db.SaveChanges();
         }
+
         // CRUD Feedback
 
-        public List<FeedBack> GetFeedbacks()
+        public List<FeedBack> GetFeedBacks()
         {
             return db.FeedBacks.ToList();
         }
@@ -164,12 +201,6 @@ namespace PayrollApplication.DAL
         public FeedBack GetFeedback(int id)
         {
             return db.FeedBacks.Where(x => x.Id == id).FirstOrDefault();
-        }
-
-        public void AddFeedback(FeedBack feedBack)
-        {
-            db.FeedBacks.Add(feedBack);
-            db.SaveChanges();
         }
 
         public void DeleteFeedBack(int id)

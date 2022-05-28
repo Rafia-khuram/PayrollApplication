@@ -1,0 +1,57 @@
+﻿
+
+@using PayrollApplication.BOL
+@model List<Attendance>
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container mt-5 justify-content-center">
+        <h3 class="contactHeading">Attendance Details</h3>
+    </div>
+    <br />
+    <table id="myTable" class="mt-2 table table-light table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Activity Type</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Employee.Name</td>
+                    <td>@item.Date</td>
+                    <td>@item.ActivityType.Name</td>
+
+                    <td>
+                        <a href="/Admin/DeleteAttendance/@item.Id"> <span class="bi bi-person-x-fill text-danger"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @section scripts{
+
+        <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+
+        </script>
+    }
+</div>

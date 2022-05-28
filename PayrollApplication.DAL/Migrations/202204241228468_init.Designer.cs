@@ -13,7 +13,7 @@ namespace PayrollApplication.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202202191305018_init"; }
+            get { return "202204241228468_init"; }
         }
         
         string IMigrationMetadata.Source
